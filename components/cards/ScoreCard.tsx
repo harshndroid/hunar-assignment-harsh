@@ -19,19 +19,18 @@ type Props = {
 
 export default function ScoreCard({ scoreData, levelData }: Props) {
   return (
-    <div className="rounded-2xl border overflow-hidden h-full lg:flex lg:flex-col lg:min-h-0 lg:self-stretch">
-      {/* Total Score — on lg the image area flexes to absorb leftover
-          height so the page fits the viewport without scrolling. */}
-      {/* Fixed-height image area: all four levels stack and cross-fade
-          inside it, so no spacer image is needed to reserve space. */}
-      {/* Mobile keeps the natural aspect ratio; on lg the image shrinks
-          to whatever height is left after the penalty rows take theirs. */}
+    <div className="rounded-2xl border overflow-hidden lg:flex lg:flex-col lg:min-h-0 lg:self-stretch lg:max-h-[630px]">
+      {/* The container follows the artwork's own ratio, so the image fills
+          the full card width with no side gutters and nothing cropped.
+          On lg it may shrink below that ratio — but only as far as the
+          space left over after the penalty rows — so the card never
+          reaches the footer. */}
       <div className="relative aspect-[500/364] w-full bg-white lg:aspect-auto lg:h-0 lg:min-h-0 lg:flex-1">
         {LEVELS.map(({ level, src }) => (
           <Image
             key={level}
             priority
-            className={`absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-500 ease-in-out lg:object-contain ${
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-in-out ${
               level === levelData ? 'opacity-100' : 'opacity-0'
             }`}
             alt={`Campaign score level ${level}`}
@@ -74,7 +73,7 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
 
 function PenaltyItem({ title, points }: { title: string; points: number }) {
   return (
-    <div className="flex items-center justify-between gap-3 px-4 py-3 border text-sm sm:px-10 sm:text-base">
+    <div className="flex items-center justify-between gap-3 px-4 py-3 border text-sm sm:px-10 sm:text-base lg:short:py-2">
       <span>{title}</span>
 
       <span
