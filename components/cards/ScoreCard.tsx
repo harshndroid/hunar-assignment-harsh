@@ -5,12 +5,12 @@ import Level3 from '@/assets/images/Level3.png';
 import Level4 from '@/assets/images/Level4.png';
 import type { ScoreData } from '@/constants/scoring';
 
-const WEATHER_LEVELS: Record<number, typeof Level1> = {
-  1: Level1,
-  2: Level2,
-  3: Level3,
-  4: Level4,
-};
+const LEVELS = [
+  { level: 1, src: Level1 },
+  { level: 2, src: Level2 },
+  { level: 3, src: Level3 },
+  { level: 4, src: Level4 },
+];
 
 type Props = {
   scoreData: ScoreData;
@@ -22,12 +22,17 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
     <div className="rounded-2xl border overflow-hidden h-full">
       {/* Total Score */}
       <div className="relative flex flex-col items-center gap-8 bg-white">
-        <Image
-          loading="eager"
-          className="w-full"
-          alt="Campaign score level"
-          src={WEATHER_LEVELS[levelData]}
-        />
+        {/* All levels render up front so switching is an opacity swap,
+            not a fetch + decode that would flash between images. */}
+        {LEVELS.map(({ level, src }) => (
+          <Image
+            key={level}
+            priority
+            className={`w-full ${level === levelData ? '' : 'invisible absolute inset-0'}`}
+            alt={`Campaign score level ${level}`}
+            src={src}
+          />
+        ))}
         <div className="absolute top-10 text-center text-white">
           <div className="text-7xl font-bold">{scoreData.totalScore}</div>
           <p className="mb-2">Campaign Score</p>

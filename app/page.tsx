@@ -25,7 +25,6 @@ export default function Home() {
     setSelectedCallingDays((prev) => {
       if (prev.includes(day)) {
         if (prev.length === 1) {
-          alert("Atleast one day needs to be selected")
           return prev;
         }
         return prev.filter((ele) => ele !== day);
