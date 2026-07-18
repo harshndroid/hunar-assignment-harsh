@@ -23,7 +23,7 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
     <div className="rounded-2xl border overflow-hidden lg:flex lg:flex-col lg:min-h-0 lg:self-start">
       {/* The artwork's native ratio at every size, as in the design: the
           image fills the card width, uncropped, with no side gutters. */}
-      <div className={`relative w-full aspect-[500/305] shrink-0 bg-white `}>
+      <div className="relative flex items-center justify-center w-full aspect-[500/305] shrink-0 bg-white">
         {LEVELS.map(({ level, src }) => (
           <Image
             key={level}
@@ -35,7 +35,7 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
             src={src}
           />
         ))}
-        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 text-center text-white">
+        <div className="absolute top-[100px] left-1/2 -translate-x-1/2 flex flex-col items-center text-center text-white">
           <div className="text-4xl font-bold sm:text-5xl lg:text-6xl">
             {scoreData.totalScore}
           </div>
