@@ -39,7 +39,7 @@ export default function GuardrailsCard({
                 className={`flex-1 min-w-0 h-10 cursor-pointer rounded-lg border text-xs transition sm:text-sm ${
                   selectedCallingDays.includes(day)
                     ? 'bg-zinc-800 text-white'
-                    : 'bg-white text-black'
+                    : 'bg-white text-zinc-800'
                 }`}
                 onClick={() => handleDayToggle(day)}
               >
@@ -51,7 +51,9 @@ export default function GuardrailsCard({
 
         {/* Calling Window */}
         <div className="mt-8 sm:mt-10 lg:mt-5 lg:short:mt-3">
-          <h4 className="font-semibold mb-6 lg:mb-4 lg:short:mb-2">Calling window</h4>
+          <h4 className="font-semibold mb-6 lg:mb-4 lg:short:mb-2">
+            Calling window
+          </h4>
 
           <Slider
             value={[selectedCallingWindow.start, selectedCallingWindow.end]}
@@ -66,7 +68,7 @@ export default function GuardrailsCard({
             }}
           />
 
-          <div className="flex justify-between mt-4 text-xs text-gray-500 sm:text-sm">
+          <div className="flex justify-between mt-4 text-xs text-zinc-500 sm:text-sm">
             {WINDOW_LABELS.map((label) => (
               <span key={label} className="whitespace-nowrap">
                 {label}

@@ -39,7 +39,7 @@ export default function RedialCard({
             }}
           />
 
-          <div className="flex justify-between mt-4 text-xs sm:text-sm">
+          <div className="text-zinc-500 flex justify-between mt-4 text-xs sm:text-sm">
             {REDIAL_COUNT_TICKS.map((count) => (
               <span key={count}>{count}</span>
             ))}
@@ -48,10 +48,12 @@ export default function RedialCard({
 
         {/* Redial interval */}
         <div className="mt-8 sm:mt-10 lg:mt-5 lg:short:mt-3">
-          <h4 className="font-semibold mb-5 lg:mb-3 lg:short:mb-2">Redial interval</h4>
+          <h4 className="font-semibold mb-5 lg:mb-3 lg:short:mb-2">
+            Redial interval
+          </h4>
 
           {/* Grid keeps the segments even instead of wrapping ragged */}
-          <div className="grid grid-cols-3 gap-1.5 bg-[#F8F8FA] p-1 border rounded-lg sm:grid-cols-5 sm:gap-3">
+          <div className="text-black-800 grid grid-cols-3 gap-1.5 bg-[#F8F8FA] p-1 border rounded-lg sm:grid-cols-5 sm:gap-3">
             {INTERVALS.map((time) => (
               <button
                 key={time}

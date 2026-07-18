@@ -39,7 +39,7 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
           <div className="text-4xl font-bold sm:text-5xl lg:text-6xl">
             {scoreData.totalScore}
           </div>
-          <p className="text-sm sm:text-base">Campaign Score</p>
+          <p className="font-semibold text-sm sm:text-base">Campaign Score</p>
         </div>
       </div>
 
@@ -86,7 +86,7 @@ function PenaltyItem({
 }) {
   return (
     <div
-      className={`flex items-center justify-between gap-3 px-4 py-3 text-sm sm:px-10 lg:short:py-2.5 ${
+      className={`flex font-semibold text-zinc-500 items-center justify-between gap-3 px-4 py-3 text-sm sm:px-10 lg:short:py-2.5 ${
         index === 3 ? '' : 'border-b'
       } `}
     >
