@@ -25,7 +25,7 @@ export default function GuardrailsCard({
       </div>
 
       {/* Card Body */}
-      <div className="bg-white p-4 sm:p-6">
+      <div className="bg-white p-4 sm:p-6 lg:py-4">
         {/* Calling Days */}
         <div>
           <h4 className="font-semibold mb-4">Calling days</h4>
@@ -50,8 +50,8 @@ export default function GuardrailsCard({
         </div>
 
         {/* Calling Window */}
-        <div className="mt-8 sm:mt-10">
-          <h4 className="font-semibold mb-6">Calling window</h4>
+        <div className="mt-8 sm:mt-10 lg:mt-5">
+          <h4 className="font-semibold mb-6 lg:mb-4">Calling window</h4>
 
           <Slider
             value={[selectedCallingWindow.start, selectedCallingWindow.end]}

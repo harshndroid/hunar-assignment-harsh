@@ -23,7 +23,7 @@ export default function RedialCard({
         <h3 className="text-lg font-semibold">Redial</h3>
       </div>
 
-      <div className="bg-white p-4 sm:p-6">
+      <div className="bg-white p-4 sm:p-6 lg:py-4">
         {/* Redial count */}
         <div>
           <h4 className="font-semibold mb-5">Redial count</h4>
@@ -46,8 +46,8 @@ export default function RedialCard({
         </div>
 
         {/* Redial interval */}
-        <div className="mt-8 sm:mt-10">
-          <h4 className="font-semibold mb-5">Redial interval</h4>
+        <div className="mt-8 sm:mt-10 lg:mt-5">
+          <h4 className="font-semibold mb-5 lg:mb-3">Redial interval</h4>
 
           {/* Grid keeps the segments even instead of wrapping ragged */}
           <div className="grid grid-cols-3 gap-1.5 bg-[#F8F8FA] p-1 border rounded-lg sm:grid-cols-5 sm:gap-3">
