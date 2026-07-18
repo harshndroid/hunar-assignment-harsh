@@ -92,8 +92,8 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="min-h-20 border-t flex justify-end items-center px-4 py-4 sm:px-10 lg:min-h-0 lg:shrink-0 lg:py-3">
-        <button className="bg-zinc-800 text-white px-8 py-3 rounded-xl w-full sm:w-auto lg:py-2">
+      <footer className="min-h-20 border-t flex justify-end items-center px-4 py-2 sm:px-10 lg:min-h-0 lg:shrink-0 lg:py-2">
+        <button className="bg-zinc-800 text-white px-8 py-2 rounded-xl w-full sm:w-auto lg:py-2">
           Submit
         </button>
       </footer>

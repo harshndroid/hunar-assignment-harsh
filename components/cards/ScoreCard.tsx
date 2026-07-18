@@ -4,6 +4,7 @@ import Level2 from '@/assets/images/Level2.png';
 import Level3 from '@/assets/images/Level3.png';
 import Level4 from '@/assets/images/Level4.png';
 import type { ScoreData } from '@/constants/scoring';
+import RecommendationBanner from '@/components/banners/RecommendationBanner';
 
 const LEVELS = [
   { level: 1, src: Level1 },
@@ -22,7 +23,7 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
     <div className="rounded-2xl border overflow-hidden lg:flex lg:flex-col lg:min-h-0 lg:self-start">
       {/* The artwork's native ratio at every size, as in the design: the
           image fills the card width, uncropped, with no side gutters. */}
-      <div className="relative aspect-[500/305] w-full shrink-0 bg-white">
+      <div className={`relative w-full aspect-[500/305] shrink-0 bg-white `}>
         {LEVELS.map(({ level, src }) => (
           <Image
             key={level}
@@ -41,6 +42,8 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
           <p className="text-sm sm:text-base">Campaign Score</p>
         </div>
       </div>
+
+      {levelData >= 3 && <RecommendationBanner />}
       {/* Penalty Section — fixed size on lg so all four rows always
           render; the image above absorbs the height changes instead. */}
       <div className="lg:shrink-0">
