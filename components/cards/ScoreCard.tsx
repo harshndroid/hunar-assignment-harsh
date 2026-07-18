@@ -19,13 +19,10 @@ type Props = {
 
 export default function ScoreCard({ scoreData, levelData }: Props) {
   return (
-    <div className="rounded-2xl border overflow-hidden lg:flex lg:flex-col lg:min-h-0 lg:self-stretch lg:max-h-[630px]">
-      {/* The container follows the artwork's own ratio, so the image fills
-          the full card width with no side gutters and nothing cropped.
-          On lg it may shrink below that ratio — but only as far as the
-          space left over after the penalty rows — so the card never
-          reaches the footer. */}
-      <div className="relative aspect-[500/364] w-full bg-white lg:aspect-auto lg:h-0 lg:min-h-0 lg:flex-1">
+    <div className="rounded-2xl border overflow-hidden lg:flex lg:flex-col lg:min-h-0 lg:self-start">
+      {/* The artwork's native ratio at every size, as in the design: the
+          image fills the card width, uncropped, with no side gutters. */}
+      <div className="relative aspect-[500/305] w-full shrink-0 bg-white">
         {LEVELS.map(({ level, src }) => (
           <Image
             key={level}

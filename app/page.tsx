@@ -64,14 +64,14 @@ export default function Home() {
         </h1>
       </header>
 
-      <section className="flex-1 max-w-7xl mx-auto w-full p-4 sm:p-6 lg:px-8 lg:py-4 lg:min-h-0 lg:flex lg:flex-col">
+      <section className="flex-1 max-w-7xl mx-auto w-full p-4 sm:p-6 lg:px-8 lg:py-4 lg:min-h-0 lg:overflow-y-auto">
         <h2 className="text-2xl font-bold mb-6 sm:text-3xl lg:text-3xl lg:mb-4 lg:shrink-0">
           Redial & Guardrails
         </h2>
 
         {/* items-start on lg keeps the control cards at their natural
             height — only the ScoreCard column flexes to fill the viewport. */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:flex-1 lg:min-h-0 lg:items-start">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-start">
           {/* Left Column */}
           <div className="flex flex-col gap-6 lg:gap-4">
             <GuardrailsCard
