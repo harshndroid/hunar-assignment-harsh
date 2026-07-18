@@ -20,21 +20,23 @@ export default function GuardrailsCard({
   return (
     <div className="rounded-2xl border bg-[#F8F8FA] overflow-hidden">
       {/* Card Header */}
-      <div className="px-6 py-4 border-b bg-[#F4F4F6]">
+      <div className="px-4 py-3 border-b bg-[#F4F4F6] sm:px-6 sm:py-4">
         <h3 className="font-semibold text-lg">Guardrails</h3>
       </div>
 
       {/* Card Body */}
-      <div className="bg-white p-6">
+      <div className="bg-white p-4 sm:p-6">
         {/* Calling Days */}
         <div>
           <h4 className="font-semibold mb-4">Calling days</h4>
 
-          <div className="flex gap-3">
+          {/* Chips share the row and shrink to fit rather than overflowing;
+              min-w-0 lets them go below their intrinsic text width. */}
+          <div className="flex gap-1.5 sm:gap-3">
             {ALL_DAYS.map((day) => (
               <button
                 key={day}
-                className={`w-16 h-10 cursor-pointer rounded-lg border transition ${
+                className={`flex-1 min-w-0 h-10 cursor-pointer rounded-lg border text-xs transition sm:text-sm ${
                   selectedCallingDays.includes(day)
                     ? 'bg-zinc-800 text-white'
                     : 'bg-white text-black'
@@ -48,7 +50,7 @@ export default function GuardrailsCard({
         </div>
 
         {/* Calling Window */}
-        <div className="mt-10">
+        <div className="mt-8 sm:mt-10">
           <h4 className="font-semibold mb-6">Calling window</h4>
 
           <Slider
@@ -63,9 +65,11 @@ export default function GuardrailsCard({
             }}
           />
 
-          <div className="flex justify-between mt-4 text-gray-500">
+          <div className="flex justify-between mt-4 text-xs text-gray-500 sm:text-sm">
             {WINDOW_LABELS.map((label) => (
-              <span key={label}>{label}</span>
+              <span key={label} className="whitespace-nowrap">
+                {label}
+              </span>
             ))}
           </div>
         </div>

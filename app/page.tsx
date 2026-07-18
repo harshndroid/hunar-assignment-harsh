@@ -58,14 +58,18 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex flex-col">
-      <header className="h-24 bg-blue-600 flex items-center px-12">
-        <h1 className="text-5xl font-semibold text-white">Level {levelData}</h1>
+      <header className="min-h-24 bg-blue-600 flex items-center px-6 py-4 sm:px-12">
+        <h1 className="text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">
+          Level {levelData}
+        </h1>
       </header>
 
-      <section className="flex-1 max-w-7xl mx-auto w-full p-8 overflow-hidden">
-        <h2 className="text-4xl font-bold mb-10">Redial & Guardrails</h2>
+      <section className="flex-1 max-w-7xl mx-auto w-full p-4 sm:p-6 lg:p-8">
+        <h2 className="text-2xl font-bold mb-6 sm:text-3xl lg:text-4xl lg:mb-10">
+          Redial & Guardrails
+        </h2>
 
-        <div className="grid grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-10">
           {/* Left Column */}
           <div className="flex flex-col gap-6">
             <GuardrailsCard
@@ -86,8 +90,8 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="h-20 border-t flex justify-end items-center px-10">
-        <button className="bg-zinc-800 text-white px-8 py-3 rounded-xl">
+      <footer className="min-h-20 border-t flex justify-end items-center px-4 py-4 sm:px-10">
+        <button className="bg-zinc-800 text-white px-8 py-3 rounded-xl w-full sm:w-auto">
           Submit
         </button>
       </footer>

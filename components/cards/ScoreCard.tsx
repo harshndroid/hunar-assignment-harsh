@@ -44,9 +44,13 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
             src={src}
           />
         ))}
-        <div className="absolute top-10 text-center text-white">
-          <div className="text-7xl font-bold">{scoreData.totalScore}</div>
-          <p className="mb-2">Campaign Score</p>
+        {/* Percentage offset keeps the score anchored to the artwork
+            as the image scales, unlike a fixed top value. */}
+        <div className="absolute top-[8%] text-center text-white">
+          <div className="text-4xl font-bold sm:text-6xl lg:text-7xl">
+            {scoreData.totalScore}
+          </div>
+          <p className="mb-2 text-sm sm:text-base">Campaign Score</p>
         </div>
       </div>
       {/* Penalty Section */}
@@ -78,11 +82,11 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
 
 function PenaltyItem({ title, points }: { title: string; points: number }) {
   return (
-    <div className="flex items-center justify-between px-10 py-3 border">
+    <div className="flex items-center justify-between gap-3 px-4 py-3 border text-sm sm:px-10 sm:text-base">
       <span>{title}</span>
 
       <span
-        className={`font-semibold ${
+        className={`font-semibold shrink-0 ${
           points === 0 ? 'text-green-600' : 'text-red-600'
         }`}
       >
