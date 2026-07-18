@@ -4,6 +4,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Short viewports (e.g. 1440x700 laptops): tighten spacing so the
+   controls and all four penalty rows still fit without scrolling. */
+@custom-variant short (@media (max-height: 820px));
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

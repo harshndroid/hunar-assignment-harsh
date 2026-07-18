@@ -23,7 +23,7 @@ export default function RedialCard({
         <h3 className="text-lg font-semibold">Redial</h3>
       </div>
 
-      <div className="bg-white p-4 sm:p-6 lg:py-4">
+      <div className="bg-white p-4 sm:p-6 lg:py-4 lg:short:py-3">
         {/* Redial count */}
         <div>
           <h4 className="font-semibold mb-5">Redial count</h4>
@@ -33,6 +33,7 @@ export default function RedialCard({
             min={0}
             max={10}
             step={1}
+            className="cursor-pointer"
             onValueChange={(value) => {
               if (typeof value === 'number') handleRedialCountChange(value);
             }}
@@ -46,16 +47,17 @@ export default function RedialCard({
         </div>
 
         {/* Redial interval */}
-        <div className="mt-8 sm:mt-10 lg:mt-5">
-          <h4 className="font-semibold mb-5 lg:mb-3">Redial interval</h4>
+        <div className="mt-8 sm:mt-10 lg:mt-5 lg:short:mt-3">
+          <h4 className="font-semibold mb-5 lg:mb-3 lg:short:mb-2">Redial interval</h4>
 
           {/* Grid keeps the segments even instead of wrapping ragged */}
           <div className="grid grid-cols-3 gap-1.5 bg-[#F8F8FA] p-1 border rounded-lg sm:grid-cols-5 sm:gap-3">
             {INTERVALS.map((time) => (
               <button
                 key={time}
-                className={`px-2 py-2 text-xs whitespace-nowrap sm:px-5 sm:text-sm ${
-                  time === selectedRedialInterval && 'border rounded-lg bg-white'
+                className={`cursor-pointer px-2 py-2 text-xs whitespace-nowrap sm:px-5 sm:text-sm ${
+                  time === selectedRedialInterval &&
+                  'border rounded-lg bg-white'
                 } `}
                 onClick={() => handleRedialIntervalChange(time)}
               >

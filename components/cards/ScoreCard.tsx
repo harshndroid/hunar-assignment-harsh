@@ -22,43 +22,31 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
     <div className="rounded-2xl border overflow-hidden h-full lg:flex lg:flex-col lg:min-h-0 lg:self-stretch">
       {/* Total Score — on lg the image area flexes to absorb leftover
           height so the page fits the viewport without scrolling. */}
-      <div className="relative flex flex-col items-center gap-8 bg-white lg:flex-1 lg:min-h-0 lg:gap-0">
-        {/* All levels render up front so switching is an opacity cross-fade,
-            not a fetch + decode that would flash between images. The first
-            image sits in normal flow (invisible) purely to give the
-            container its height; the rest stack on top of it. */}
-        <Image
-          priority
-          aria-hidden
-          alt=""
-          // className="w-full invisible lg:hidden"
-          className="w-full"
-          src={LEVELS[0].src}
-        />
+      {/* Fixed-height image area: all four levels stack and cross-fade
+          inside it, so no spacer image is needed to reserve space. */}
+      {/* Mobile keeps the natural aspect ratio; on lg the image shrinks
+          to whatever height is left after the penalty rows take theirs. */}
+      <div className="relative aspect-[500/364] w-full bg-white lg:aspect-auto lg:h-0 lg:min-h-0 lg:flex-1">
         {LEVELS.map(({ level, src }) => (
           <Image
             key={level}
             priority
-            // className={`absolute inset-0 w-full transition-opacity duration-500 ease-in-out ${
-            //   level === levelData ? 'opacity-100' : 'opacity-0'
-            // }`}
-            className={`absolute inset-0 w-full transition-opacity duration-500 ease-in-out lg:h-full lg:object-contain lg:object-top ${
+            className={`absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-500 ease-in-out lg:object-contain ${
               level === levelData ? 'opacity-100' : 'opacity-0'
             }`}
             alt={`Campaign score level ${level}`}
             src={src}
           />
         ))}
-        {/* Percentage offset keeps the score anchored to the artwork
-            as the image scales, unlike a fixed top value. */}
-        <div className="absolute top-[8%] text-center text-white">
-          <div className="text-4xl font-bold sm:text-6xl lg:text-7xl">
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 text-center text-white">
+          <div className="text-4xl font-bold sm:text-5xl lg:text-6xl">
             {scoreData.totalScore}
           </div>
-          <p className="mb-2 text-sm sm:text-base">Campaign Score</p>
+          <p className="text-sm sm:text-base">Campaign Score</p>
         </div>
       </div>
-      {/* Penalty Section */}
+      {/* Penalty Section — fixed size on lg so all four rows always
+          render; the image above absorbs the height changes instead. */}
       <div className="lg:shrink-0">
         <PenaltyItem
           title="Calling days penalty"
