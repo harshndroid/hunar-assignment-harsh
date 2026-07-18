@@ -47,7 +47,7 @@ export default function RedialCard({
         </div>
 
         {/* Redial interval */}
-        <div className="mt-8 sm:mt-10 lg:mt-5 lg:short:mt-3">
+        <div className="mt-8 sm:mt-10 lg:mt-5 lg:short:mt-8">
           <h4 className="font-semibold mb-5 lg:mb-3 lg:short:mb-2">
             Redial interval
           </h4>

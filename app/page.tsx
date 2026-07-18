@@ -48,6 +48,10 @@ export default function Home() {
     setSelectedRedialInterval(interval);
   }
 
+  function handleSubmitClick() {
+    console.log('scoreData', scoreData);
+  }
+
   const scoreData = calculateScore({
     callingDays: selectedCallingDays,
     callingWindow: selectedCallingWindow,
@@ -93,7 +97,10 @@ export default function Home() {
       </section>
 
       <footer className="min-h-20 border-t flex justify-end items-center px-4 py-2 sm:px-10 lg:min-h-0 lg:shrink-0 lg:py-2">
-        <button className="font-semibold bg-zinc-800 text-white px-4 py-2 rounded-xl w-full sm:w-auto lg:py-2">
+        <button
+          onClick={() => handleSubmitClick()}
+          className="font-semibold bg-zinc-800 text-white px-4 py-2 rounded-xl w-full sm:w-auto lg:py-2"
+        >
           Submit
         </button>
       </footer>

@@ -50,7 +50,7 @@ export default function GuardrailsCard({
         </div>
 
         {/* Calling Window */}
-        <div className="mt-8 sm:mt-10 lg:mt-5 lg:short:mt-3">
+        <div className="mt-8 sm:mt-10 lg:mt-5 lg:short:mt-8">
           <h4 className="font-semibold mb-6 lg:mb-4 lg:short:mb-2">
             Calling window
           </h4>
@@ -60,7 +60,7 @@ export default function GuardrailsCard({
             min={8}
             max={21}
             step={1}
-            className="cursor-pointer"
+            className="cursor-pointer mt-4"
             onValueChange={(value) => {
               if (Array.isArray(value)) {
                 handleCallingWindowChange({ start: value[0], end: value[1] });

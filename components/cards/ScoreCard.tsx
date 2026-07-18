@@ -86,7 +86,7 @@ function PenaltyItem({
 }) {
   return (
     <div
-      className={`flex font-semibold text-zinc-500 items-center justify-between gap-3 px-4 py-3 text-sm sm:px-10 lg:short:py-2.5 ${
+      className={`flex font-semibold text-zinc-500 items-center justify-between gap-3 px-4 py-3 text-sm sm:px-10 lg:short:py-4 ${
         index === 3 ? '' : 'border-b'
       } `}
     >
