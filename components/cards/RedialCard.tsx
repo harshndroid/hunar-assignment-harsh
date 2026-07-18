@@ -1,6 +1,14 @@
 import { Slider } from '@/components/ui/slider';
 
-const INTERVALS = [3, 6, 9, 12, 24];
+const INTERVALS = [3, 6, 9, 12, 24]; // hours
+const REDIAL_COUNT_TICKS = [0, 2, 4, 6, 8, 10]; // redial counts
+
+type Props = {
+  selectedRedialCount: number;
+  handleRedialCountChange: (value: number) => void;
+  selectedRedialInterval: number;
+  handleRedialIntervalChange: (time: number) => void;
+};
 
 export default function RedialCard({
   selectedRedialCount,
@@ -15,9 +23,8 @@ export default function RedialCard({
         <h3 className="text-lg font-semibold">Redial</h3>
       </div>
 
-      {/* Body */}
       <div className="bg-white p-6">
-        {/* Number of retries */}
+        {/* Redial count */}
         <div>
           <h4 className="font-semibold mb-5">Redial count</h4>
 
@@ -32,13 +39,13 @@ export default function RedialCard({
           />
 
           <div className="flex justify-between mt-4">
-            {[0, 2, 4, 6, 8, 10].map((count) => (
+            {REDIAL_COUNT_TICKS.map((count) => (
               <span key={count}>{count}</span>
             ))}
           </div>
         </div>
 
-        {/* Retry interval */}
+        {/* Redial interval */}
         <div className="mt-10">
           <h4 className="font-semibold mb-5">Redial interval</h4>
 
@@ -60,10 +67,3 @@ export default function RedialCard({
     </div>
   );
 }
-
-type Props = {
-  selectedRedialCount: number;
-  handleRedialCountChange: (value: number) => void;
-  selectedRedialInterval: number;
-  handleRedialIntervalChange: (time: number) => void;
-};

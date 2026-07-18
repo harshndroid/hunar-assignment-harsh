@@ -1,6 +1,15 @@
 import { Slider } from '@/components/ui/slider';
+import type { CallingWindow } from '@/constants/defaultScoreConfig';
 
 const ALL_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const WINDOW_LABELS = ['8 AM', '11 AM', '2 PM', '5 PM', '9 PM'];
+
+type Props = {
+  selectedCallingDays: string[];
+  handleDayToggle: (day: string) => void;
+  selectedCallingWindow: CallingWindow;
+  handleCallingWindowChange: (times: CallingWindow) => void;
+};
 
 export default function GuardrailsCard({
   selectedCallingDays,
@@ -25,12 +34,11 @@ export default function GuardrailsCard({
             {ALL_DAYS.map((day) => (
               <button
                 key={day}
-                className={`w-16 h-10 cursor-pointer rounded-lg border transition
-                  ${
-                    selectedCallingDays.includes(day)
-                      ? 'bg-zinc-800 text-white'
-                      : 'bg-white text-black'
-                  }`}
+                className={`w-16 h-10 cursor-pointer rounded-lg border transition ${
+                  selectedCallingDays.includes(day)
+                    ? 'bg-zinc-800 text-white'
+                    : 'bg-white text-black'
+                }`}
                 onClick={() => handleDayToggle(day)}
               >
                 {day}
@@ -43,7 +51,6 @@ export default function GuardrailsCard({
         <div className="mt-10">
           <h4 className="font-semibold mb-6">Calling window</h4>
 
-          {/* Slider Placeholder */}
           <Slider
             value={[selectedCallingWindow.start, selectedCallingWindow.end]}
             min={8}
@@ -51,33 +58,18 @@ export default function GuardrailsCard({
             step={1}
             onValueChange={(value) => {
               if (Array.isArray(value)) {
-                handleCallingWindowChange({
-                  start: value[0],
-                  end: value[1],
-                });
+                handleCallingWindowChange({ start: value[0], end: value[1] });
               }
             }}
           />
 
           <div className="flex justify-between mt-4 text-gray-500">
-            <span>8 AM</span>
-            <span>11 AM</span>
-            <span>2 PM</span>
-            <span>5 PM</span>
-            <span>9 PM</span>
+            {WINDOW_LABELS.map((label) => (
+              <span key={label}>{label}</span>
+            ))}
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-type Props = {
-  selectedCallingDays: string[];
-  handleDayToggle: (day: string) => void;
-  selectedCallingWindow: {
-    start: number;
-    end: number;
-  };
-  handleCallingWindowChange: (times: { start: number; end: number }) => void;
-};

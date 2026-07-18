@@ -3,6 +3,7 @@ import Level1 from '@/assets/images/Level1.png';
 import Level2 from '@/assets/images/Level2.png';
 import Level3 from '@/assets/images/Level3.png';
 import Level4 from '@/assets/images/Level4.png';
+import type { ScoreData } from '@/constants/scoring';
 
 const WEATHER_LEVELS: Record<number, typeof Level1> = {
   1: Level1,
@@ -11,30 +12,23 @@ const WEATHER_LEVELS: Record<number, typeof Level1> = {
   4: Level4,
 };
 
+type Props = {
+  scoreData: ScoreData;
+  levelData: number;
+};
+
 export default function ScoreCard({ scoreData, levelData }: Props) {
   return (
     <div className="rounded-2xl border overflow-hidden h-full">
-      {/* Body */}
-      <div
-        style={{ position: 'relative', display: 'flex', alignItems: 'center' }}
-        className="bg-white flex flex-col gap-8"
-      >
-        {/* Overall Score */}
+      {/* Total Score */}
+      <div className="relative flex flex-col items-center gap-8 bg-white">
         <Image
           loading="eager"
-          style={{ width: '-webkit-fill-available' }}
-          alt="img"
+          className="w-full"
+          alt="Campaign score level"
           src={WEATHER_LEVELS[levelData]}
         />
-        <div
-          style={{
-            position: 'absolute',
-            color: 'white',
-            top: 40,
-            textAlign: 'center',
-          }}
-          className="text-center"
-        >
+        <div className="absolute top-10 text-center text-white">
           <div className="text-7xl font-bold">{scoreData.totalScore}</div>
           <p className="mb-2">Campaign Score</p>
         </div>
@@ -68,19 +62,12 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
 
 function PenaltyItem({ title, points }: { title: string; points: number }) {
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}
-      className="px-10 py-3 border"
-    >
+    <div className="flex items-center justify-between px-10 py-3 border">
       <span>{title}</span>
 
       <span
         className={`font-semibold ${
-          Number(points) === 0 ? 'text-green-600' : 'text-red-600'
+          points === 0 ? 'text-green-600' : 'text-red-600'
         }`}
       >
         {points}
@@ -88,14 +75,3 @@ function PenaltyItem({ title, points }: { title: string; points: number }) {
     </div>
   );
 }
-
-type Props = {
-  scoreData: {
-    totalScore: number;
-    daysPenalty: number;
-    windowPenalty: number;
-    redialsPenalty: number;
-    intervalPenalty: number;
-  };
-  levelData: number;
-};
