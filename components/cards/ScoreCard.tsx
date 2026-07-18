@@ -22,13 +22,24 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
     <div className="rounded-2xl border overflow-hidden h-full">
       {/* Total Score */}
       <div className="relative flex flex-col items-center gap-8 bg-white">
-        {/* All levels render up front so switching is an opacity swap,
-            not a fetch + decode that would flash between images. */}
+        {/* All levels render up front so switching is an opacity cross-fade,
+            not a fetch + decode that would flash between images. The first
+            image sits in normal flow (invisible) purely to give the
+            container its height; the rest stack on top of it. */}
+        <Image
+          priority
+          aria-hidden
+          alt=""
+          className="w-full invisible"
+          src={LEVELS[0].src}
+        />
         {LEVELS.map(({ level, src }) => (
           <Image
             key={level}
             priority
-            className={`w-full ${level === levelData ? '' : 'invisible absolute inset-0'}`}
+            className={`absolute inset-0 w-full transition-opacity duration-500 ease-in-out ${
+              level === levelData ? 'opacity-100' : 'opacity-0'
+            }`}
             alt={`Campaign score level ${level}`}
             src={src}
           />
