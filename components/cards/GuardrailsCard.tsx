@@ -30,8 +30,6 @@ export default function GuardrailsCard({
         <div>
           <h4 className="font-semibold mb-4">Calling days</h4>
 
-          {/* Chips share the row and shrink to fit rather than overflowing;
-              min-w-0 lets them go below their intrinsic text width. */}
           <div className="flex gap-1.5 sm:gap-3">
             {ALL_DAYS.map((day) => (
               <button

@@ -21,8 +21,6 @@ type Props = {
 export default function ScoreCard({ scoreData, levelData }: Props) {
   return (
     <div className="rounded-2xl border overflow-hidden lg:flex lg:flex-col lg:min-h-0 lg:self-start">
-      {/* The artwork's native ratio at every size, as in the design: the
-          image fills the card width, uncropped, with no side gutters. */}
       <div className="relative flex items-center justify-center w-full aspect-[500/305] shrink-0 bg-white">
         {LEVELS.map(({ level, src }) => (
           <Image
@@ -44,8 +42,7 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
       </div>
 
       {levelData >= 3 && <RecommendationBanner />}
-      {/* Penalty Section — fixed size on lg so all four rows always
-          render; the image above absorbs the height changes instead. */}
+      
       <div className="lg:shrink-0">
         <PenaltyItem
           index={0}

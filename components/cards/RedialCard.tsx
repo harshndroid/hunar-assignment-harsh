@@ -52,7 +52,6 @@ export default function RedialCard({
             Redial interval
           </h4>
 
-          {/* Grid keeps the segments even instead of wrapping ragged */}
           <div className="text-black-800 grid grid-cols-3 gap-1.5 bg-[#F8F8FA] p-1 border rounded-lg sm:grid-cols-5 sm:gap-3">
             {INTERVALS.map((time) => (
               <button
