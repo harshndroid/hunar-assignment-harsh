@@ -19,9 +19,10 @@ type Props = {
 
 export default function ScoreCard({ scoreData, levelData }: Props) {
   return (
-    <div className="rounded-2xl border overflow-hidden h-full">
-      {/* Total Score */}
-      <div className="relative flex flex-col items-center gap-8 bg-white">
+    <div className="rounded-2xl border overflow-hidden h-full lg:flex lg:flex-col lg:min-h-0 lg:self-stretch">
+      {/* Total Score — on lg the image area flexes to absorb leftover
+          height so the page fits the viewport without scrolling. */}
+      <div className="relative flex flex-col items-center gap-8 bg-white lg:flex-1 lg:min-h-0 lg:gap-0">
         {/* All levels render up front so switching is an opacity cross-fade,
             not a fetch + decode that would flash between images. The first
             image sits in normal flow (invisible) purely to give the
@@ -30,14 +31,18 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
           priority
           aria-hidden
           alt=""
-          className="w-full invisible"
+          // className="w-full invisible lg:hidden"
+          className="w-full"
           src={LEVELS[0].src}
         />
         {LEVELS.map(({ level, src }) => (
           <Image
             key={level}
             priority
-            className={`absolute inset-0 w-full transition-opacity duration-500 ease-in-out ${
+            // className={`absolute inset-0 w-full transition-opacity duration-500 ease-in-out ${
+            //   level === levelData ? 'opacity-100' : 'opacity-0'
+            // }`}
+            className={`absolute inset-0 w-full transition-opacity duration-500 ease-in-out lg:h-full lg:object-contain lg:object-top ${
               level === levelData ? 'opacity-100' : 'opacity-0'
             }`}
             alt={`Campaign score level ${level}`}
@@ -54,8 +59,7 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
         </div>
       </div>
       {/* Penalty Section */}
-
-      <div>
+      <div className="lg:shrink-0">
         <PenaltyItem
           title="Calling days penalty"
           points={scoreData.daysPenalty}

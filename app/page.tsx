@@ -57,21 +57,23 @@ export default function Home() {
   const levelData = calculateLevel(scoreData.totalScore);
 
   return (
-    <main className="min-h-screen flex flex-col">
-      <header className="min-h-24 bg-blue-600 flex items-center px-6 py-4 sm:px-12">
-        <h1 className="text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">
+    <main className="min-h-screen flex flex-col lg:h-screen lg:overflow-auto">
+      <header className="min-h-24 bg-blue-600 flex items-center px-6 py-4 sm:px-12 lg:min-h-0 lg:shrink-0 lg:py-3">
+        <h1 className="text-3xl font-semibold text-white sm:text-4xl lg:text-4xl">
           Level {levelData}
         </h1>
       </header>
 
-      <section className="flex-1 max-w-7xl mx-auto w-full p-4 sm:p-6 lg:p-8">
-        <h2 className="text-2xl font-bold mb-6 sm:text-3xl lg:text-4xl lg:mb-10">
+      <section className="flex-1 max-w-7xl mx-auto w-full p-4 sm:p-6 lg:px-8 lg:py-4 lg:min-h-0 lg:flex lg:flex-col">
+        <h2 className="text-2xl font-bold mb-6 sm:text-3xl lg:text-3xl lg:mb-4 lg:shrink-0">
           Redial & Guardrails
         </h2>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-10">
+        {/* items-start on lg keeps the control cards at their natural
+            height — only the ScoreCard column flexes to fill the viewport. */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:flex-1 lg:min-h-0 lg:items-start">
           {/* Left Column */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 lg:gap-4">
             <GuardrailsCard
               selectedCallingDays={selectedCallingDays}
               handleDayToggle={handleDayToggle}
@@ -90,8 +92,8 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="min-h-20 border-t flex justify-end items-center px-4 py-4 sm:px-10">
-        <button className="bg-zinc-800 text-white px-8 py-3 rounded-xl w-full sm:w-auto">
+      <footer className="min-h-20 border-t flex justify-end items-center px-4 py-4 sm:px-10 lg:min-h-0 lg:shrink-0 lg:py-3">
+        <button className="bg-zinc-800 text-white px-8 py-3 rounded-xl w-full sm:w-auto lg:py-2">
           Submit
         </button>
       </footer>
