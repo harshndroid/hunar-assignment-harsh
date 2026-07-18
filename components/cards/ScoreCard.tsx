@@ -35,7 +35,7 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
             src={src}
           />
         ))}
-        <div className="absolute top-[100px] left-1/2 -translate-x-1/2 flex flex-col items-center text-center text-white">
+        <div className="absolute top-[70px] left-1/2 -translate-x-1/2 flex flex-col items-center text-center text-white">
           <div className="text-4xl font-bold sm:text-5xl lg:text-6xl">
             {scoreData.totalScore}
           </div>
@@ -48,21 +48,25 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
           render; the image above absorbs the height changes instead. */}
       <div className="lg:shrink-0">
         <PenaltyItem
+          index={0}
           title="Calling days penalty"
           points={scoreData.daysPenalty}
         />
 
         <PenaltyItem
+          index={1}
           title="Calling window penalty"
           points={scoreData.windowPenalty}
         />
 
         <PenaltyItem
+          index={2}
           title="Redial count penalty"
           points={scoreData.redialsPenalty}
         />
 
         <PenaltyItem
+          index={3}
           title="Redial interval penalty"
           points={scoreData.intervalPenalty}
         />
@@ -71,9 +75,21 @@ export default function ScoreCard({ scoreData, levelData }: Props) {
   );
 }
 
-function PenaltyItem({ title, points }: { title: string; points: number }) {
+function PenaltyItem({
+  index,
+  title,
+  points,
+}: {
+  index: number;
+  title: string;
+  points: number;
+}) {
   return (
-    <div className="flex items-center justify-between gap-3 px-4 py-3 border text-sm sm:px-10 sm:text-base lg:short:py-2">
+    <div
+      className={`flex items-center justify-between gap-3 px-4 py-3 text-sm sm:px-10 lg:short:py-2.5 ${
+        index === 3 ? '' : 'border-b'
+      } `}
+    >
       <span>{title}</span>
 
       <span
